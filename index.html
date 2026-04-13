@@ -496,11 +496,11 @@
   }
 
   /* ─── ANIMATIONS ─── */
-  .fade-in {
+  .js-loaded .fade-in {
     opacity: 0; transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
-  .fade-in.visible {
+  .js-loaded .fade-in.visible {
     opacity: 1; transform: translateY(0);
   }
 
@@ -546,7 +546,7 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <div class="nav-logo-text">Element<span>44</span></div>
+    <a href="#"><img src="./images/E44CLOGORGB_HORIZONTALSILVER.png" alt="Element 44 Consulting" class="nav-logo"></a>
     <div class="nav-links" id="navLinks">
       <a href="#services">Services</a>
       <a href="#process">Process</a>
@@ -731,7 +731,7 @@
     <div class="section-label">Ready?</div>
     <div class="section-title">Let's figure out what's not working<br>and fix it together.</div>
     <p>Book a free 30-minute discovery call. No pitch, no pressure — just a conversation about where your business is and where it could go.</p>
-    <a href="/cdn-cgi/l/email-protection#3d7851585058534909095e52534e48514954535a7d5a505c5451135e5250" class="btn-primary">Book Your Free Consultation</a>
+    <a href="mailto:Element44consulting@gmail.com" class="btn-primary">Book Your Free Consultation</a>
   </div>
 </section>
 
@@ -739,7 +739,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-brand-name">Element<span>44</span> Consulting</div>
+      <img src="./images/E44CLOGORGB_HORIZONTALSILVER.png" alt="Element 44 Consulting" style="height: 36px; margin-bottom: 12px; opacity: 0.85;">
       <p>Support That Builds Success. Helping small businesses get agency-level marketing without agency-level complexity.</p>
     </div>
     <div class="footer-col">
@@ -756,7 +756,7 @@
     </div>
     <div class="footer-col">
       <h4>Get in Touch</h4>
-      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f4b1989199919a80c0c0979b9a878198809d9a93b49399959d98da979b99">[email&#160;protected]</a></p>
+      <p>Element44consulting@gmail.com</p>
       <p style="margin-top: 8px;">(289) 244-0012</p>
       <p style="margin-top: 8px;">www.element44.ca</p>
     </div>
@@ -767,7 +767,10 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+  // Mark JS as active — cards stay visible if this never runs
+  document.body.classList.add('js-loaded');
+
   // Scroll fade-in animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -794,4 +797,15 @@
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      e.preventD
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('navLinks').classList.remove('open');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
