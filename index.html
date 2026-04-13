@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Element 44 Consulting | Support That Builds Success</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  :root {
+    --navy: #2B2D5B;
+    --navy-dark: #1e1f40;
+    --navy-light: #3a3c6e;
+    --grey: #A8A9AD;
+    --grey-light: #d4d4d6;
+    --grey-lighter: #f0f0f2;
+    --gold: #C2A85A;
+    --gold-light: #d4be7a;
+    --gold-dark: #a89045;
+    --white: #ffffff;
+    --off-white: #fafafa;
+    --text-dark: #1a1a2e;
+    --text-body: #4a4a5a;
+    --text-light: #7a7a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    color: var(--text-body);
+    background: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    background: rgba(43, 45, 91, 0.97);
+    backdrop-filter: blur(12px);
+    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(194, 168, 90, 0.15);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+  }
+  .nav-logo { height: 40px; opacity: 0.95; }
+  .nav-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600; font-size: 1.3rem;
+    color: var(--white); letter-spacing: 0.5px;
+  }
+  .nav-logo-text span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 0.85rem; font-weight: 400; letter-spacing: 0.8px;
+    text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy) !important;
+    padding: 10px 24px; border-radius: 4px;
+    font-weight: 700 !important; letter-spacing: 0.5px !important;
+    transition: all 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+  .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--white); transition: 0.3s; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    background: var(--navy);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(194,168,90,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(168,169,173,0.06) 0%, transparent 50%),
+      linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 40%, var(--navy-light) 100%);
+  }
+  .hero-grid-lines {
+    position: absolute; inset: 0; overflow: hidden; opacity: 0.04;
+  }
+  .hero-grid-lines::before {
+    content: '';
+    position: absolute; top: -50%; left: 50%; width: 800px; height: 800px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: pulse-ring 8s ease-in-out infinite;
+  }
+  .hero-grid-lines::after {
+    content: '';
+    position: absolute; bottom: -30%; right: -10%; width: 600px; height: 600px;
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+    animation: pulse-ring 10s ease-in-out infinite reverse;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.7; transform: translateX(-50%) scale(1.05); }
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+    padding: 140px 40px 100px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .hero-content {}
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 28px;
+    padding: 8px 16px;
+    border: 1px solid rgba(194,168,90,0.3);
+    border-radius: 2px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.8rem; font-weight: 600;
+    line-height: 1.1; color: var(--white);
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 1.1rem; line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 40px; max-width: 480px;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    display: inline-block; padding: 16px 36px;
+    background: var(--gold); color: var(--navy);
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px;
+    transition: all 0.3s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(194,168,90,0.3); }
+  .btn-outline {
+    display: inline-block; padding: 16px 36px;
+    background: transparent; color: var(--white);
+    font-weight: 400; font-size: 0.85rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.3s; cursor: pointer;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+  }
+  .hero-icon-container {
+    width: 340px; height: 340px;
+    border: 1px solid rgba(194,168,90,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .hero-icon-container::before {
+    content: ''; position: absolute; inset: -20px;
+    border: 1px solid rgba(168,169,173,0.1);
+    border-radius: 50%;
+  }
+  .hero-icon-container::after {
+    content: '44';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem; font-weight: 700;
+    color: rgba(194,168,90,0.15);
+    position: absolute;
+  }
+  .hero-stats {
+    position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 40px;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+  }
+  .hero-stat-label {
+    font-size: 0.7rem; color: rgba(255,255,255,0.45);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 120px 40px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 600;
+    color: var(--text-dark); line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-subtitle {
+    font-size: 1.05rem; line-height: 1.7;
+    color: var(--text-light); max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* ─── PROBLEM / SOLUTION ─── */
+  .problem {
+    background: var(--off-white);
+    border-top: 1px solid var(--grey-lighter);
+    border-bottom: 1px solid var(--grey-lighter);
+  }
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: start; margin-top: 60px;
+  }
+  .problem-card {
+    padding: 48px;
+    background: var(--white);
+    border: 1px solid var(--grey-lighter);
+    border-radius: 8px;
+    position: relative;
+  }
+  .problem-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--navy);
+    border-radius: 8px 8px 0 0;
+  }
+  .problem-card.solution::before { background: var(--gold); }
+  .problem-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--text-dark); margin-bottom: 20px;
+  }
+  .problem-card p {
+    font-size: 0.95rem; line-height: 1.8;
+    color: var(--text-body);
+  }
+
+  /* ─── SERVICES ─── */
+  .services { background: var(--white); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 60px;
+  }
+  .service-card {
+    padding: 44px 36px;
+    border: 1px solid var(--grey-lighter);
+    border-radius: 8px;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 0; background: var(--navy);
+    transition: height 0.4s;
+  }
+  .service-card:hover {
+    border-color: var(--navy);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(43,45,91,0.08);
+  }
+  .service-card:hover::after { height: 3px; }
+  .service-tier {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600;
+    color: var(--text-dark); margin-bottom: 8px;
+  }
+  .service-price {
+    font-size: 0.85rem; color: var(--grey);
+    margin-bottom: 20px; font-weight: 300;
+  }
+  .service-card p {
+    font-size: 0.9rem; line-height: 1.75;
+    color: var(--text-body); margin-bottom: 20px;
+  }
+  .service-includes {
+    font-size: 0.8rem; color: var(--text-light);
+    line-height: 1.8;
+  }
+  .service-includes strong {
+    color: var(--text-dark); font-weight: 700;
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ─── PROCESS ─── */
+  .process { background: var(--navy); color: var(--white); }
+  .process .section-label { color: var(--gold); }
+  .process .section-title { color: var(--white); }
+  .process .section-subtitle { color: rgba(255,255,255,0.5); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+    margin-top: 60px; position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 40px; left: 12.5%; right: 12.5%;
+    height: 1px; background: rgba(194,168,90,0.2);
+  }
+  .process-step { text-align: center; position: relative; }
+  .step-num {
+    width: 80px; height: 80px;
+    border: 1px solid rgba(194,168,90,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--gold);
+    background: var(--navy);
+    position: relative; z-index: 1;
+  }
+  .process-step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .process-step p {
+    font-size: 0.85rem; line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ─── ABOUT ─── */
+  .about { background: var(--off-white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
+    align-items: center;
+  }
+  .about-image {
+    aspect-ratio: 4/5;
+    background: var(--navy);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-image::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--navy-dark), var(--navy-light));
+  }
+  .about-image-text {
+    position: relative; z-index: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 700;
+    color: rgba(194,168,90,0.12);
+  }
+  .about-content {}
+  .about-content .section-title { margin-bottom: 24px; }
+  .about-content p {
+    font-size: 0.95rem; line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .about-values {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-top: 32px;
+  }
+  .about-value {
+    padding: 20px;
+    border: 1px solid var(--grey-lighter);
+    border-radius: 6px;
+    background: var(--white);
+  }
+  .about-value h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--text-dark); margin-bottom: 6px;
+  }
+  .about-value p {
+    font-size: 0.8rem; line-height: 1.6;
+    color: var(--text-light); margin-bottom: 0;
+  }
+
+  /* ─── TESTIMONIAL ─── */
+  .testimonial {
+    background: var(--white);
+    text-align: center;
+    border-top: 1px solid var(--grey-lighter);
+  }
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 400;
+    font-style: italic; color: var(--text-dark);
+    line-height: 1.5; max-width: 700px;
+    margin: 0 auto 24px;
+  }
+  .testimonial-quote::before {
+    content: '\201C';
+    display: block;
+    font-size: 4rem; color: var(--gold);
+    line-height: 0.5; margin-bottom: 16px;
+    font-style: normal;
+  }
+  .testimonial-attr {
+    font-size: 0.85rem; color: var(--text-light);
+    font-weight: 300;
+  }
+  .testimonial-attr strong { color: var(--text-dark); font-weight: 700; }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: var(--navy);
+    text-align: center;
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(194,168,90,0.06) 0%, transparent 70%);
+  }
+  .cta-inner { position: relative; z-index: 1; }
+  .cta-section .section-title { color: var(--white); margin-bottom: 16px; }
+  .cta-section p {
+    font-size: 1.05rem; color: rgba(255,255,255,0.55);
+    margin-bottom: 40px; max-width: 500px;
+    margin-left: auto; margin-right: auto;
+    font-weight: 300; line-height: 1.7;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--navy-dark);
+    padding: 60px 40px 40px;
+    border-top: 1px solid rgba(194,168,90,0.1);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px;
+  }
+  .footer-brand {}
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .footer-brand-name span { color: var(--gold); }
+  .footer-brand p {
+    font-size: 0.85rem; line-height: 1.7;
+    color: rgba(255,255,255,0.4);
+    max-width: 280px;
+  }
+  .footer-col h4 {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .footer-col a {
+    display: block; font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none; margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--white); }
+  .footer-col p {
+    font-size: 0.85rem; color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+  .footer-bottom {
+    max-width: 1200px; margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p {
+    font-size: 0.75rem; color: rgba(255,255,255,0.25);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { display: none; }
+    .hero h1 { font-size: 3rem; }
+    .services-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-image { max-height: 300px; aspect-ratio: 16/9; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .problem-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 768px) {
+    section { padding: 80px 24px; }
+    .nav-inner { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--navy); padding: 24px;
+      border-top: 1px solid rgba(194,168,90,0.1);
+    }
+    .hero h1 { font-size: 2.4rem; }
+    .hero-inner { padding: 120px 24px 80px; }
+    .section-title { font-size: 2.2rem; }
+    .process-steps { grid-template-columns: 1fr; }
+    .about-values { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .testimonial-quote { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo-text">Element<span>44</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Book a Call</a>
+    </div>
+    <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Small Business Marketing Partner</div>
+      <h1>Agency-level marketing.<br><em>Without the agency.</em></h1>
+      <p class="hero-sub">Element 44 gives small businesses the marketing strategy, creative firepower, and hands-on support they need to grow — without the overhead, the jargon, or the runaround.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+        <a href="#services" class="btn-outline">See How We Help</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-icon-container">
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">75%</div>
+            <div class="hero-stat-label">Growth Rate</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">85%</div>
+            <div class="hero-stat-label">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / SOLUTION -->
+<section class="problem">
+  <div class="container">
+    <div class="section-label">The Reality</div>
+    <div class="section-title">You're good at running your business.<br>Marketing shouldn't be this hard.</div>
+    <div class="problem-grid">
+      <div class="problem-card fade-in">
+        <h3>Sound familiar?</h3>
+        <p>You've tried doing your own marketing — maybe posted on social media for a while, paid someone on Fiverr for a logo, or boosted a Facebook post and watched the money disappear. You know you need help, but agencies want $5K/month minimums and freelancers ghost after two weeks. Meanwhile, your competitor down the street just launched a new website and you're still using the one your nephew built in 2019.</p>
+      </div>
+      <div class="problem-card solution fade-in">
+        <h3>There's a better way.</h3>
+        <p>Element 44 was built specifically for businesses like yours — owner-operated, revenue between $10K and $200K per month, and tired of guessing at marketing. You get a dedicated consultant who learns your business, builds a strategy that fits your budget, and actually executes the work. No account managers. No endless meetings. Just clear plans and measurable results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label">What We Do</div>
+    <div class="section-title">Three ways to work together.</div>
+    <div class="section-subtitle">Every engagement is built around where your business is today and where you want it to go. Pick the tier that fits.</div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-tier">Starter</div>
+        <h3>Foundation</h3>
+        <div class="service-price">$1,500 – $3,000 per project</div>
+        <p>For businesses that need one thing done well. A brand refresh, a website blueprint, or a marketing audit — a clear starting point with defined deliverables and a timeline.</p>
+        <div class="service-includes">
+          <strong>Includes</strong><br>
+          Brand Kickstart — logo, colors, fonts, and a brand guide you can hand to any future vendor. Website Blueprint — sitemap, wireframes, all page copy written, SEO keyword strategy. Marketing Diagnostic — full audit of your current presence with a prioritized action plan.
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-tier">Standard</div>
+        <h3>Growth</h3>
+        <div class="service-price">$2,500 – $5,000 per month</div>
+        <p>For businesses with traction that need consistent marketing execution. Monthly strategy, content creation, social media management, and email campaigns — all handled.</p>
+        <div class="service-includes">
+          <strong>Includes</strong><br>
+          Monthly strategy sessions, content calendar planning, social media management across two platforms, email marketing setup and campaigns, plus monthly performance reports with clear recommendations.
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-tier">Premium</div>
+        <h3>Partner</h3>
+        <div class="service-price">$5,000 – $10,000 per month</div>
+        <p>Your fractional CMO. Element 44 embeds into your business as your marketing leader — strategy, execution, vendor management, and quarterly business reviews with ROI analysis.</p>
+        <div class="service-includes">
+          <strong>Includes</strong><br>
+          Everything in Growth, plus bi-weekly strategy calls, brand development, vendor oversight, quarterly business reviews, and priority same-day response for urgent needs.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">From first call to real results.</div>
+    <div class="section-subtitle">No drawn-out sales process. No mystery. Here's exactly what happens when you reach out.</div>
+    <div class="process-steps">
+      <div class="process-step fade-in">
+        <div class="step-num">01</div>
+        <h4>Discovery Call</h4>
+        <p>A 30-minute conversation to understand your business, your challenges, and what you've already tried. No pitch — just listening.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">02</div>
+        <h4>Deep Dive</h4>
+        <p>We dig into your marketing, your competitors, and your numbers. This is where we figure out what's actually going to move the needle for your business.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">03</div>
+        <h4>Custom Proposal</h4>
+        <p>Within two business days, you get a clear plan with scope, timeline, deliverables, and pricing. Two options — recommended and alternative. No surprises.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">04</div>
+        <h4>Execute & Report</h4>
+        <p>Work begins. You get regular updates, milestone check-ins, and transparent reporting so you always know what's happening and why.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image fade-in">
+        <div class="about-image-text">44</div>
+      </div>
+      <div class="about-content fade-in">
+        <div class="section-label">About Element 44</div>
+        <div class="section-title">Built by someone who gets it.</div>
+        <p>Element 44 Consulting was founded by Yinka Onile with a simple observation: small businesses get the worst deal in marketing. Agencies won't touch you unless you're spending five figures a month. Freelancers are unreliable. And DIY marketing is a time sink that pulls you away from actually running your business.</p>
+        <p>Element 44 exists to bridge that gap. The name draws from Ruthenium — element 44 on the periodic table — a rare metal known for its strength and resilience. That's the kind of foundation we build for our clients.</p>
+        <div class="about-values">
+          <div class="about-value">
+            <h4>Clarity</h4>
+            <p>Straightforward guidance. No jargon, no runaround.</p>
+          </div>
+          <div class="about-value">
+            <h4>Partnership</h4>
+            <p>We work alongside you, not above you.</p>
+          </div>
+          <div class="about-value">
+            <h4>Empowerment</h4>
+            <p>We teach you to fish, not just serve dinner.</p>
+          </div>
+          <div class="about-value">
+            <h4>Results</h4>
+            <p>Everything ties back to your bottom line.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="container fade-in">
+    <div class="section-label">Client Impact</div>
+    <div class="testimonial-quote">
+      When small businesses thrive, entire communities grow stronger. That's not just a tagline — it's why Element 44 exists.
+    </div>
+    <div class="testimonial-attr"><strong>Yinka Onile</strong> — Founder, Element 44 Consulting</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner fade-in">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Let's figure out what's not working<br>and fix it together.</div>
+    <p>Book a free 30-minute discovery call. No pitch, no pressure — just a conversation about where your business is and where it could go.</p>
+    <a href="/cdn-cgi/l/email-protection#3d7851585058534909095e52534e48514954535a7d5a505c5451135e5250" class="btn-primary">Book Your Free Consultation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Element<span>44</span> Consulting</div>
+      <p>Support That Builds Success. Helping small businesses get agency-level marketing without agency-level complexity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Foundation</a>
+      <a href="#services">Growth</a>
+      <a href="#services">Partner</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f4b1989199919a80c0c0979b9a878198809d9a93b49399959d98da979b99">[email&#160;protected]</a></p>
+      <p style="margin-top: 8px;">(289) 244-0012</p>
+      <p style="margin-top: 8px;">www.element44.ca</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Element 44 Consulting. All rights reserved.</p>
+    <p>Support That Builds Success</p>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll fade-in animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Nav background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.nav');
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(30, 31, 64, 0.99)';
+      nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
+    } else {
+      nav.style.background = 'rgba(43, 45, 91, 0.97)';
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventD
